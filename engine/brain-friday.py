@@ -29,21 +29,21 @@ voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[1].id)
 
 # Initialize Spotify
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id='906c8e0ccd2d4c279e763dbf5d6e989e',
-                                               client_secret='2a40fd87eecc405096fc7a560a126cb3',
+sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id='0',
+                                               client_secret='0',
                                                redirect_uri='https://fri-spotify/callback',
                                                scope='user-library-read user-modify-playback-state'))
 
 recognizer = sr.Recognizer()
 
 
-NEWS_API_KEY = ('02d9448b935841ab90ab6b1dd6634c66')
+NEWS_API_KEY = ('0')
 
 
 def get_latest_news():
     news_headlines = []
     res = requests.get(
-    f"https://newsapi.org/v2/top-headlines?country=in&apiKey={'02d9448b935841ab90ab6b1dd6634c66'}&category=general").json()
+    f"https://newsapi.org/v2/top-headlines?country=in&apiKey={'0'}&category=general").json()
     articles = res["articles"]
     for article in articles:
         news_headlines.append(article["title"])
@@ -91,7 +91,7 @@ def transcribe_audio(audio_data, model_name, api_token):
     audio_list = list(audio_bytes)
 
     url = "https://api-inference.huggingface.co/models/" + 'meta-llama/Meta-Llama-3.1-70B-Instruc'
-    headers = {"Authorization": f"Bearer {'8ffa22d8-eef2-409f-a6f6-6e4bad75646a16ff93'}"}
+    headers = {"Authorization": f"Bearer {'0'}"}
     data = {"inputs": audio_list}  # Use a list instead of raw bytes
 
     try:
